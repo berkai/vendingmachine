@@ -24,5 +24,9 @@
 - **python3.9**
 
 ```bash
+pip3 install loguru==0.5.3
+```
+
+```bash
 python3 main.py
 ```
