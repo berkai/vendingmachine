@@ -4,6 +4,7 @@ from os import environ as env
 class AppConfig:
     LOG_LEVEL = env.get("LOG_LEVEL", "info").upper()
     LOG_COLORIZE = env.get("LOG_COLORIZE", "false").lower() == "true"
+    MAINTENANCE_MODE = env.get("MAINTENANCE_MODE", eval("False")) == False
     STOCKS = {
     0: {'name': 'Magnum', 'price': 6},
     1: {'name': 'Oreo', 'price': 6},

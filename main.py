@@ -2,6 +2,7 @@ from utils.logging import Logger
 from configs import AppConfig
 from machine import vending_machine as vm
 
+import time
 def display_menu(operation):
     '''
     all ops about the vending machine
@@ -80,6 +81,7 @@ def get_all_ops():
     return operation_names
 
 if __name__ == '__main__':
-
-    operation = input(get_all_ops())
-    display_menu(operation)
+    while AppConfig.MAINTENANCE_MODE:
+        operation = input(get_all_ops())
+        display_menu(operation)
+        time.sleep(5)
