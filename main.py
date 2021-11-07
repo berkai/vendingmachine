@@ -24,20 +24,15 @@ def display_menu(operation):
             Logger.info(f"Insert a coin from the following coins list: [{'$, '.join(map(str, AppConfig.ALLOWED_COINS))}]")
             amount = input('\n ')
             Logger.info(f"{item_name} selected. price is {item_price} and deposit amount is {amount}\n")
-            # added_amount = vending_machine.insert_coin(int(snack_code), int(amount))
             if int(amount) >= item_price:
                 vending_machine.buy_ops(int(snack_code), amount)
-                Logger.info(f"Selected snack: {item_name}\n"
-                            f"--------Bon Appetit--------\n")
             else:
                 Logger.info(f"You can't buy {item_name} with {amount} coins!\n")
                 added_amount = vending_machine.insert_coin(snack_code, int(amount))
-                # items_and_keys = vending_machine.get_price(added_amount)
                 vending_machine.buy_ops(int(snack_code), added_amount)
         else:
             customer_answer = input("Would you like to buy another snack?:\n [Y/N]\n")
-            answer = vending_machine.bool_question(customer_answer)
-            if answer:
+            if vending_machine.bool_question(customer_answer):
                 display_menu(operation)
             else:
                 display_menu(input(get_all_ops()))
@@ -65,8 +60,6 @@ def display_menu(operation):
                 else:
                     Logger.info("Come here with more money (0.0)"
                                 f"Here is your money:{amount}")
-
-
     else:
         Logger.info('You have not chosen a valid option, please try again.')
 
